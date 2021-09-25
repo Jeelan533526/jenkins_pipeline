@@ -1,0 +1,29 @@
+pipeline {
+    agent {
+  label 'Slave-Jeelan'}
+  environment {
+    PATH = "/opt/maven/bin:$PATH"
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/dev']], extensions: [], userRemoteConfigs: [[credentialsId: 'JeelanGitHub', url: 'https://github.com/Jeelan533526/java_project.git']]])
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage('deploy'){
+            steps {
+                deploy adapters: [tomcat8(credentialsId: 'Jeelan', path: '', url: 'http://3.110.15.130:8080/')], contextPath: 'hello', war: '**/target/*.war'
+            }
+        }
+    }
+}
