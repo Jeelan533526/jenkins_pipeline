@@ -1,4 +1,4 @@
-currentBuild.displayName-"pipeline_Jeelan-#"+BUILD_NUMBER
+currentBuild.displayName="pipeline_Jeelan-#"+BUILD_NUMBER
 pipeline {
     agent {
   label 'Slave-Jeelan'}
