@@ -22,8 +22,7 @@ pipeline {
         }
         stage ('Artifactory upload') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'hello-world-war', classifier: '', file: '/home/ec2-user/workspace/workspace/Pipeline_Jeelan/target/hello-world-war-2.0.4.war', type: 'war']], credentialsId: 'jeelannexus', groupId: 'com.efsavage', nexusUrl: '3.110.15.130:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'java_project', version: '2.0.5'
-             }
+                nexusArtifactUploader artifacts: [[artifactId: 'hello-world-war', classifier: '', file: '/home/ec2-user/workspace/workspace/Pipeline_Jeelan/target/hello-world-war-2.0.4.war', type: 'war']], credentialsId: 'jeelannexus', groupId: 'com.efsavage', nexusUrl: '3.110.15.130:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'java-project-Jeelan', version: '2.0.5'             }
          }
         stage('deploy'){
             steps {
